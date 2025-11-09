@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mateusdutra-tp2-song-v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mateusdutra-tp2-song
+  template:
+    metadata:
+      labels:
+        app: mateusdutra-tp2-song
+    spec:
+      containers:
+      #Model container:
+      - name: mateusdutra-tp2-song-ml
+        image: quay.io/mmdutra14/mateusdutra-tp2-song-ml:1
+        imagePullPolicy: Always
+        env:
+        - name: MIN_CONFIDENCE
+          value: "0.1"
+        - name: MIN_SUPPORT_RATIO
+          value: "0.1"
+        - name: DATASET_ADDRESS
+          value: "https://homepages.dcc.ufmg.br/~cunha/hosted/cloudcomp-2023s2-datasets/2023_spotify_ds1.csv"
+        volumeMounts:
+        - name: shared-volume
+          mountPath: /app/data
+
+      - name: mateusdutra-tp2-song-api
+        image: quay.io/mmdutra14/mateusdutra-tp2-song-api:1
+        ports:
+        - containerPort: 50010
+        env:
+        - name: VERSION
+          value: "1.0.3"
+        - name: NB_RECOMENDATION_SONGS
+          value: "3"
+        volumeMounts:
+        - name: shared-volume
+          mountPath: /app/data
+    
+      volumes:
+        - name: shared-volume
+          persistentVolumeClaim:
+            claimName: mateusdutra-tp2-song-pvc
