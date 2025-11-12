@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from .config import Config
 from .model_loader import ModelLoader
 from .recommender import RecommendationService
@@ -13,7 +13,7 @@ def create_app():
 
     @app.route("/")
     def home():
-        return "<p>Playlist Recommendation API is running</p>"
+        return render_template('recommendation-page.html')
 
     @app.route("/api/recommend", methods=["POST"])
     def recommend():
