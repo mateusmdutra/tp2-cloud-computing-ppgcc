@@ -14,14 +14,9 @@ spec:
         app: mateusdutra-tp2-song
     spec:
       containers:
-      - name: mateusdutra-tp2-song-ml
-        image: quay.io/mmdutra14/mateusdutra-tp2-song-ml
+      - name: mateusdutra-tp2-song-api
+        image: quay.io/mmdutra14/mateusdutra-tp2-song-api
         imagePullPolicy: Always
-        env:
-        - name: MIN_CONFIDENCE
-          value: "0.1"
-        - name: MIN_SUPPORT_RATIO
-          value: "0.1"
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data
