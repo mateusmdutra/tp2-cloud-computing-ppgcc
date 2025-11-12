@@ -19,11 +19,11 @@ spec:
       - name: mateusdutra-tp2-song-api
         image: quay.io/mmdutra14/mateusdutra-tp2-song-api
         imagePullPolicy: Always
+        ports:
+        - containerPort: 65534
         env:
         - name: "RECOMMENDATION_SONGS"
           value: "3"
-        # - name: "VERSION"
-        #   value: "1.0.1"
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data
