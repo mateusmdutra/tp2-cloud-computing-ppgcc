@@ -13,7 +13,6 @@ class Config:
         self.min_confidence = self._get_env_float("MIN_CONFIDENCE", 0.1)
         self.dataset_url = os.getenv("DATASET_ADDRESS", self.DEFAULT_DATASET_URL)
         self.results_path = "data/rules.pickle"
-        self.loop_interval = 10  # seconds
 
         logging.basicConfig(
             level=logging.INFO,

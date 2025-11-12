@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ml-job-7
+  labels:
+    jobgroup: ml-job
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
+spec:
+  ttlSecondsAfterFinished: 1200
+  template:
+    metadata:
+      labels:
+        app: mateusdutra-tp2-song
+    spec:
+      containers:
+      - name: mateusdutra-tp2-song-ml
+        image: quay.io/mmdutra14/mateusdutra-tp2-song-ml
+        imagePullPolicy: Always
+        env:
+        - name: MIN_CONFIDENCE
+          value: "0.1"
+        - name: MIN_SUPPORT_RATIO
+          value: "0.1"
+        volumeMounts:
+        - name: shared-volume
+          mountPath: /app/data
+      restartPolicy: OnFailure
+      volumes:
+        - name: shared-volume
+          persistentVolumeClaim:
+            claimName: mateusdutra-tp2-song-pvc

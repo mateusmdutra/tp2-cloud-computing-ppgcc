@@ -1,4 +1,5 @@
-import time
+from datetime import datetime
+import pytz
 import ssl
 from .data_loader import DatasetLoader
 from .rule_miner import RuleMiner
@@ -14,6 +15,12 @@ class RuleGenerationService:
         self.repo = RuleRepository(config)
         ssl._create_default_https_context = ssl._create_unverified_context
 
+    def get_current_time_str(self):
+        now_utc = datetime.now(pytz.utc)
+        sao_paulo_time = now_utc.astimezone(pytz.timezone("America/Sao_Paulo"))
+        sao_paulo_time_str = sao_paulo_time.strftime("%Y-%m-%d %H:%M:%S")
+        return sao_paulo_time_str
+
     def run(self):
         """Run the complete rule generation pipeline."""
         self.config.logger.info("Starting playlist rule generation service...")
@@ -22,8 +29,6 @@ class RuleGenerationService:
         rules = self.miner.mine(itemsets)
         self.repo.save(rules)
 
-        while True:
-            self.config.logger.info(
-                f"Rules generated and saved. Sleeping for {self.config.loop_interval}s..."
-            )
-            time.sleep(self.config.loop_interval)
+        self.config.logger.info(
+            f"Run complete. Exiting, current time is ", self.get_current_time_str()
+        )
