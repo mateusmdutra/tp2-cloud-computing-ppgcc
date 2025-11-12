@@ -2,9 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mateusdutra-tp2-song-v1
+  name: mateusdutra-tp2-song-ml
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: mateusdutra-tp2-song
@@ -19,7 +21,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: "RECOMMENDATION_SONGS"
-          value: 3
+          value: "3"
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data
