@@ -30,5 +30,5 @@ class RuleGenerationService:
         self.repo.save(rules)
 
         self.config.logger.info(
-            f"Run complete. Exiting, current time is ", self.get_current_time_str()
+            f"Run complete. Exiting, current time is {self.get_current_time_str()}"
         )

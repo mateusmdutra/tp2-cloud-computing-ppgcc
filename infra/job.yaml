@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ml-job-7
+  name: mateusdutra-tp2-song-ml
   labels:
-    jobgroup: ml-job
+    jobgroup: mateusdutra-tp2-song
   annotations:
     argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
