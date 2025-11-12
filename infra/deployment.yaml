@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: "RECOMMENDATION_SONGS"
-          value: 3
+          value: "3"
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data
