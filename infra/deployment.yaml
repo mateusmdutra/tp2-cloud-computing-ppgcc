@@ -17,6 +17,9 @@ spec:
       - name: mateusdutra-tp2-song-api
         image: quay.io/mmdutra14/mateusdutra-tp2-song-api
         imagePullPolicy: Always
+        env:
+        - name: "RECOMMENDATION_SONGS"
+          value: 3
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data

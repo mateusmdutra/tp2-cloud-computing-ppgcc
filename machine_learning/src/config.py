@@ -9,8 +9,8 @@ class Config:
     )
 
     def __init__(self):
-        self.min_support = self._get_env_float("MIN_SUPPORT_RATIO", 0.1)
-        self.min_confidence = self._get_env_float("MIN_CONFIDENCE", 0.1)
+        self.min_support = self._get_env_float("MIN_SUPPORT_RATIO", 0.05)
+        self.min_confidence = self._get_env_float("MIN_CONFIDENCE", 0.03)
         self.dataset_url = os.getenv("DATASET_ADDRESS", self.DEFAULT_DATASET_URL)
         self.results_path = "data/rules.pickle"
 

@@ -1,14 +1,13 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN pip install --upgrade pip
-
 COPY requirements.txt .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+COPY . /app/
 
-EXPOSE 50010
+EXPOSE 65534
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=66600"]
+CMD ["python", "-m", "src"]
