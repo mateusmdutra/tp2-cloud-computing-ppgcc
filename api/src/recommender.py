@@ -17,7 +17,7 @@ class RecommendationService:
 
         rules = self.model_loader.rules
         user_set = set(user_songs)
-        recommendations = defaultdict(float)  # {song: confidence}
+        recommendations = defaultdict(float)
 
         for antecedent, consequent, confidence in rules:
             if user_set.issuperset(antecedent):

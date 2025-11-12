@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: mateusdutra-tp2-song
