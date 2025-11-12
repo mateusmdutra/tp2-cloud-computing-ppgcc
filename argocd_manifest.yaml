@@ -1,0 +1,12 @@
+project: diogoneiss-project
+source:
+  repoURL: https://github.com/mateusmdutra/tp2-cloud-computing-ppgcc
+  path: ./infra/
+  targetRevision: HEAD
+destination:
+  server: https://kubernetes.default.svc
+  namespace: mateusdutra
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
