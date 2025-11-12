@@ -22,9 +22,19 @@ spec:
         env:
         - name: "RECOMMENDATION_SONGS"
           value: "3"
+        # - name: "VERSION"
+        #   value: "1.0.1"
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data
+        readinessProbe:
+          httpGet:
+            path: /healthCheck
+            port: 65534
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
     
       volumes:
         - name: shared-volume
