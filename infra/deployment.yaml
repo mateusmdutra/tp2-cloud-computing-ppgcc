@@ -29,7 +29,7 @@ spec:
           mountPath: /app/data
         readinessProbe:
           httpGet:
-            path: /healthCheck
+            path: /api/healthCheck
             port: 65534
             scheme: HTTP
           initialDelaySeconds: 5
