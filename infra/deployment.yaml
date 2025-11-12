@@ -2,9 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mateusdutra-tp2-song-v1
+  name: mateusdutra-tp2-song-ml
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: mateusdutra-tp2-song
