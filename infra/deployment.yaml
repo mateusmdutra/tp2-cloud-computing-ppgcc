@@ -24,6 +24,8 @@ spec:
         env:
         - name: "RECOMMENDATION_SONGS"
           value: "3"
+        - name: "VERSION"
+          value: "1.0.2"
         volumeMounts:
         - name: shared-volume
           mountPath: /app/data
