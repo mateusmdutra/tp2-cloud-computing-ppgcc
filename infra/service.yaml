@@ -7,5 +7,5 @@ spec:
     app: mateusdutra-tp2-song
   ports:
     - protocol: TCP
-      port: 50010
-      targetPort: 50010
+      port: 65534
+      targetPort: 65534
