@@ -14,6 +14,10 @@ def create_app():
     @app.route("/")
     def home():
         return render_template('recommendation-page.html')
+    
+    @app.route("/api/healthCheck")
+    def healthCheck():
+        return jsonify({"status": "healthy", "version": config.version}), 200
 
     @app.route("/api/recommend", methods=["POST"])
     def recommend():
