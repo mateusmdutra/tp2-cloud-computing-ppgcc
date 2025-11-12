@@ -1,4 +1,4 @@
-project: diogoneiss-project
+project: mateusdutra-project
 source:
   repoURL: https://github.com/mateusmdutra/tp2-cloud-computing-ppgcc
   path: ./infra/
