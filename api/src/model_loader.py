@@ -14,7 +14,7 @@ class ModelLoader:
 
     def _load_model(self):
         """Load pickled rules from disk."""
-        path = self.config.model_path
+        path = "data/rules.pickle"
         self.logger.info(path)
         if not os.path.exists(path):
             self.logger.error(f"Model file not found at {path}")
