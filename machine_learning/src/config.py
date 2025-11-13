@@ -4,15 +4,12 @@ import logging
 class Config:
     """Holds all configuration and environment settings."""
 
-    DEFAULT_DATASET_URL = (
-        "https://homepages.dcc.ufmg.br/~cunha/hosted/cloudcomp-2023s2-datasets/2023_spotify_ds1.csv"
-    )
-
     def __init__(self):
         self.min_support = self._get_env_float("MIN_SUPPORT_RATIO", 0.05)
         self.min_confidence = self._get_env_float("MIN_CONFIDENCE", 0.03)
-        self.dataset_url = os.getenv("DATASET_ADDRESS", self.DEFAULT_DATASET_URL)
+        self.dataset_url = os.getenv("DATASET_ADDRESS", "https://homepages.dcc.ufmg.br/~cunha/hosted/cloudcomp-2023s2-datasets/2023_spotify_ds2.csv")
         self.results_path = "data/rules.pickle"
+        self.version = os.getenv("VERSION", "1.0")
 
         logging.basicConfig(
             level=logging.INFO,

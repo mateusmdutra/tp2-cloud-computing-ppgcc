@@ -15,6 +15,7 @@ class RuleRepository:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         metadata = {
             "rules": rules,
+            "version": self.config.version,
             "model_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         }
         with open(output_path, "wb") as f:
