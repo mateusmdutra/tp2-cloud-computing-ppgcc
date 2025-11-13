@@ -18,6 +18,10 @@ spec:
         image: quay.io/mmdutra14/mateusdutra-tp2-song-ml
         imagePullPolicy: Always
         env:
+        - name: DATASET_ADDRESS
+          value: "https://homepages.dcc.ufmg.br/~cunha/hosted/cloudcomp-2023s2-datasets/2023_spotify_ds2.csv"
+        - name: VERSION
+          value: "1.0.1"
         - name: MIN_CONFIDENCE
           value: "0.1"
         - name: MIN_SUPPORT_RATIO

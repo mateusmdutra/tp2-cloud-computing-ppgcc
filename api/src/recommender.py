@@ -37,6 +37,7 @@ class RecommendationService:
             "songs": songs,
             "version": self.config.version,
             "model_date": self.model_loader.model_date,
+            "model_version": self.model_loader.model_version
         }
 
         self.logger.info(

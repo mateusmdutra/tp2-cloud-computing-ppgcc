@@ -10,6 +10,7 @@ class ModelLoader:
         self.logger = config.logger
         self.rules = []
         self.model_date = "unknown"
+        self.model_version = "unknown"
         self._load_model()
 
     def _load_model(self):
@@ -25,4 +26,5 @@ class ModelLoader:
 
         self.rules = content.get("rules", [])
         self.model_date = content.get("model_date", "unknown")
+        self.model_version = content.get("version", "unknown")
         self.logger.info(f"Loaded {len(self.rules)} rules (model date: {self.model_date})")
